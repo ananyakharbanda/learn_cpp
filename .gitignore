@@ -1,0 +1,15 @@
+# compiled programs
+a.out
+app
+*.out
+
+# object files
+*.o
+
+# build folder
+build/
+
+# editor/temp files
+*.swp
+.vscode/
+.DS_Store
