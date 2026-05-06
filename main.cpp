@@ -1,18 +1,22 @@
 #include <iostream>
 #include <cstdint>
 
+class Student{
+    public:
+        Student(){
+        }
+        void check_result() { }
+    private:
+        int age_;
+};
+
+void check_result(const Student& s){
+   Student& temp = const_cast<Student&>(s);
+   temp.check_result(); 
+}
+
 int main() {
-    int x = 10;
-    int& r = x;
-    int y = 20;
-    r = y;
-    
-    std::cout << &x << std::endl;
-    std::cout << &r << std::endl;
-    std::cout << x << std::endl;
-    std::cout << r << std::endl;
-    std::cout << &x << std::endl;
-    std::cout << &r << std::endl;
+    Student s;
+    check_result(s);
     return 0;
 }
-	
