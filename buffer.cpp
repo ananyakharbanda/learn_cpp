@@ -4,18 +4,22 @@ class Buffer {
     int* data;
     size_t size;
 public:
+    // normal constructor
     Buffer(size_t n) : size{n}, data{new int[n]} {
         std::cout << "constructor: allocated " << n << " ints" << std::endl;
         for (int i=0; i<size; i++) {
             data[i] = i;
         }
     }
+        
+    // deep copy constructor 
     Buffer(const Buffer& rhs) {
         std::cout << "deep copy constructor called" << std::endl;
         this->data = new int[rhs.size];
         std::copy(rhs.data, rhs.data + size, data);
     }
     
+    // copy assignment 
     Buffer& operator=(const Buffer& other) {
         std::cout << "called copy assignment" << std::endl;
         
@@ -28,7 +32,8 @@ public:
             
         return *this;
     }
-        
+    
+    // destructor 
     ~Buffer() {
         std::cout << "destructor: freeing memory" << std::endl;
         delete[] data;

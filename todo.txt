@@ -10,3 +10,5 @@ copy initialization
 how to open a file for write mode if it doesnt already exist
 
 rules of default values of primitive types
+
+are friend functions public by default?
