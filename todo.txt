@@ -14,3 +14,7 @@ rules of default values of primitive types
 are friend functions public by default?
 
 does std::copy throw an exception
+
+difference between std::copy and strcpy
+
+std::exchange
