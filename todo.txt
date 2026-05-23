@@ -18,3 +18,5 @@ does std::copy throw an exception
 difference between std::copy and strcpy
 
 std::exchange
+
+check if alive in unique_ptr;
