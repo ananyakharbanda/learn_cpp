@@ -12,8 +12,11 @@ vector: my_vector.cpp;
 unique_ptr: my_unique_ptr.cpp;
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-clean: 
-	rm -f a.out raii_file vector unique_ptr
+animal: inheritance.cpp;
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-all: raii_file vector unique_ptr
+clean: 
+	rm -f a.out raii_file vector unique_ptr animal
+
+all: raii_file vector unique_ptr animal
 

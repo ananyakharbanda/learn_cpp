@@ -20,3 +20,5 @@ difference between std::copy and strcpy
 std::exchange
 
 check if alive in unique_ptr;
+
+virtual destructor why it is necessary when you have a virtual function
