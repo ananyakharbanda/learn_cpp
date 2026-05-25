@@ -15,8 +15,17 @@ unique_ptr: my_unique_ptr.cpp;
 animal: inheritance.cpp;
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-clean: 
-	rm -f a.out raii_file vector unique_ptr animal
+pure_virtual: pure_virtual.cpp;
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-all: raii_file vector unique_ptr animal
+virtual_functions: virtual_destructor.cpp;
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+shapes: shapes.cpp;
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+clean: 
+	rm -f a.out raii_file vector unique_ptr animal pure_virtual virtual_functions shapes
+
+all: raii_file vector unique_ptr animal pure_virtual virtual_functions shapes
 
