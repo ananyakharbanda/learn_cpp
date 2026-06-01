@@ -22,3 +22,7 @@ std::exchange
 check if alive in unique_ptr;
 
 virtual destructor why it is necessary when you have a virtual function
+
+lambda in c++
+
+pre/post increment operator 

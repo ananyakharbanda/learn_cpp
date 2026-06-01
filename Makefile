@@ -24,8 +24,16 @@ virtual_functions: virtual_destructor.cpp;
 shapes: shapes.cpp;
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
+prac_shared: prac_shared_ptr.cpp;
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+shared: my_shared_ptr.cpp;
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+test_ptr: test_ptr.cpp;
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
 clean: 
-	rm -f a.out raii_file vector unique_ptr animal pure_virtual virtual_functions shapes
+	rm -f a.out raii_file vector unique_ptr animal pure_virtual virtual_functions shapes prac_shared shared test_ptr
 
-all: raii_file vector unique_ptr animal pure_virtual virtual_functions shapes
-
+all: raii_file vector unique_ptr animal pure_virtual virtual_functions shapes shared prac_shared test_ptr
