@@ -26,3 +26,5 @@ virtual destructor why it is necessary when you have a virtual function
 lambda in c++
 
 pre/post increment operator 
+
+shrink_to_fit in vector
