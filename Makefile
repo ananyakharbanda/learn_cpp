@@ -33,7 +33,10 @@ shared: my_shared_ptr.cpp;
 test_ptr: test_ptr.cpp;
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-clean: 
-	rm -f a.out raii_file vector unique_ptr animal pure_virtual virtual_functions shapes prac_shared shared test_ptr
+iterators: iterators.cpp;
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-all: raii_file vector unique_ptr animal pure_virtual virtual_functions shapes shared prac_shared test_ptr
+clean: 
+	rm -f a.out raii_file vector unique_ptr animal pure_virtual virtual_functions shapes prac_shared shared test_ptr iterators
+
+all: raii_file vector unique_ptr animal pure_virtual virtual_functions shapes shared prac_shared test_ptr iterators
