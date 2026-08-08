@@ -1,74 +1,96 @@
-#include <utility>
-
 template <typename T>
-
 class UniquePtr {
+
 private:
     T* ptr;
 
 public:
-    // 1. constructor
-    explicit UniquePtr(T* p) {
-        ptr = p;
+    // 1. Default constructor
+    UniquePtr() {
+
+        ptr = nullptr;
     }
-   
-    // 2. destructor 
+
+    // 2. Constructor that takes ownership
+    explicit UniquePtr(T* incomingPointer) {
+
+        ptr = incomingPointer;
+    }
+
+    // 3. Destructor
     ~UniquePtr() {
+
         delete ptr;
     }
-   
-    // 3. cannot copy 
-    UniquePtr(const UniquePtr&) = delete;
-    
-    UniquePtr& operator=(const UniquePtr&) = delete;
-    
-    // 4. move constructor 
+
+
+    // 4. Copy constructor is forbidden
+    UniquePtr(const UniquePtr& other) = delete;
+
+
+    // 5. Copy assignment is forbidden
+    UniquePtr& operator=(const UniquePtr& other) = delete;
+
+
+    // 6. Move constructor
     UniquePtr(UniquePtr&& other) noexcept {
         ptr = other.ptr;
         other.ptr = nullptr;
     }
-    
-    // 5. move assignment
+
+    // 7. Move assignment
     UniquePtr& operator=(UniquePtr&& other) noexcept {
         if (this != &other) {
             delete ptr;
-            
             ptr = other.ptr;
             other.ptr = nullptr;
         }
+
         return *this;
     }
 
-    // 6. dereference
-    T& operator *() const {
+    // 8. Dereference operator
+    T& operator*() const {
         return *ptr;
     }
-    
-    // 7. arrow operator
+
+    // 9. Arrow operator
     T* operator->() const {
         return ptr;
     }
-    
-    // 8. Access raw pointer
+
+    // 10. Return raw pointer without giving up ownership
     T* get() const {
         return ptr;
     }
-    
-    // 9. Check whether pointer exists
+
+    // 11. Check whether we own something
     explicit operator bool() const {
-        return ptr != nullptr;
+        if (ptr == nullptr) {
+            return false;
+        }
+        return true;
     }
-    
-    // 10. Give up ownership
+
+
+    // 12. Give up ownership
     T* release() {
-        return std::exchange(ptr, nullptr);
+        T* oldPointer = ptr;
+        ptr = nullptr;
+        return oldPointer;
     }
-    
-    // 11. Replace owned object
-    void reset(T* p = nullptr) {
-        if (ptr != p) {
+
+    // 13. Delete current object and own nothing
+    void reset() {
+        delete ptr;
+        ptr = nullptr;
+    }
+
+    // 14. Delete current object and own a new one
+    void reset(T* newPointer) {
+        if (ptr != newPointer) {
             delete ptr;
-            ptr = p;
+            ptr = newPointer;
         }
     }
-}; 
+};
