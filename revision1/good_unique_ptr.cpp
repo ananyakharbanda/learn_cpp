@@ -7,30 +7,24 @@ private:
 public:
     // 1. Default constructor
     UniquePtr() {
-
         ptr = nullptr;
     }
 
     // 2. Constructor that takes ownership
     explicit UniquePtr(T* incomingPointer) {
-
         ptr = incomingPointer;
     }
 
     // 3. Destructor
     ~UniquePtr() {
-
         delete ptr;
     }
-
 
     // 4. Copy constructor is forbidden
     UniquePtr(const UniquePtr& other) = delete;
 
-
     // 5. Copy assignment is forbidden
     UniquePtr& operator=(const UniquePtr& other) = delete;
-
 
     // 6. Move constructor
     UniquePtr(UniquePtr&& other) noexcept {
